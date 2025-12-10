@@ -1,0 +1,39 @@
+<div class="page-header">
+    <h2>Gestión de Catálogo</h2>
+    <button class="btn-primary" routerLink="/admin/catalog/new">Nuevo Mueble</button>
+</div>
+
+<div class="card">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let m of muebles">
+                <td>{{ m.nombre }}</td>
+                <td>{{ m.tipo }}</td>
+                <td>${{ m.precioBase }}</td>
+                <td>{{ m.stock }}</td>
+                <td>
+                    <span [class.badge-active]="m.estado === 'activo'" [class.badge-inactive]="m.estado === 'inactivo'">
+                        {{ m.estado }}
+                    </span>
+                </td>
+                <td class="actions">
+                    <button class="btn-link" [routerLink]="['/admin/catalog/edit', m.id]">Editar</button>
+                    <button class="btn-link text-danger" (click)="deleteMueble(m.id)">Eliminar</button>
+                </td>
+            </tr>
+            <tr *ngIf="muebles.length === 0">
+                <td colspan="6" class="text-center">No hay muebles registrados.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

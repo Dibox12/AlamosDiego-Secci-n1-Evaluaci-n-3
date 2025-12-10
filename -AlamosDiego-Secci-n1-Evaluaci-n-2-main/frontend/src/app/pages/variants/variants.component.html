@@ -1,0 +1,21 @@
+<div class="page-header">
+    <h2>Gestión de Variantes</h2>
+    <button class="btn-primary" routerLink="/admin/variants/new">Nueva Variante</button>
+</div>
+
+<div class="card">
+    <div *ngFor="let v of variantes" class="variant-item">
+        <div class="variant-info">
+            <h3>{{ v.descripcion }}</h3>
+            <p>+${{ v.incrementoPrecio }}</p>
+            <p class="text-muted" *ngIf="v.mueble">Aplica a: {{ v.mueble.nombre }}</p>
+        </div>
+        <div class="actions">
+            <button class="btn-link">Editar</button>
+            <button class="btn-link text-danger">Eliminar</button>
+        </div>
+    </div>
+    <div *ngIf="variantes.length === 0" class="text-center p-4">
+        No hay variantes registradas.
+    </div>
+</div>

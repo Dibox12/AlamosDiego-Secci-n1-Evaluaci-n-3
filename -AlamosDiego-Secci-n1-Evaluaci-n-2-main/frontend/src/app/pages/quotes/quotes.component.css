@@ -1,0 +1,106 @@
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.quotes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.quote-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #efebe9;
+    transition: transform 0.2s;
+}
+
+.quote-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+.quote-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f5f5f5;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.client-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #3e2723;
+}
+
+.quote-date {
+    font-size: 0.9rem;
+    color: #8d6e63;
+}
+
+.quote-total {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2e7d32;
+    text-align: right;
+    margin-top: 1rem;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-pending {
+    background-color: #fff3e0;
+    color: #ef6c00;
+}
+
+.status-completed {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.items-list {
+    margin: 1rem 0;
+    font-size: 0.95rem;
+    color: #5d4037;
+}
+
+.items-list ul {
+    padding-left: 1.2rem;
+    margin: 0;
+}
+
+.items-list li {
+    margin-bottom: 0.3rem;
+}
+
+.actions {
+    margin-top: 1.5rem;
+    text-align: right;
+}
+
+.btn-confirm {
+    background-color: #3e2723;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-confirm:hover {
+    background-color: #5d4037;
+}

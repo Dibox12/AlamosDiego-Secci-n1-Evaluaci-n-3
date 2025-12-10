@@ -1,0 +1,41 @@
+<div class="page-header">
+    <h2>Cotizaciones Recibidas</h2>
+</div>
+
+<div class="quotes-grid">
+    <div *ngFor="let c of cotizaciones" class="quote-card">
+        <div class="quote-header">
+            <div>
+                <div class="client-name">{{ c.cliente || 'Anónimo' }}</div>
+                <div class="quote-date">{{ c.fecha | date:'mediumDate' }}</div>
+            </div>
+            <div class="status-badge" [class.status-completed]="c.confirmada" [class.status-pending]="!c.confirmada">
+                {{ c.confirmada ? 'Venta Confirmada' : 'Pendiente' }}
+            </div>
+        </div>
+
+        <div class="items-list">
+            <strong>Items:</strong>
+            <ul>
+                <li *ngFor="let item of c.items">
+                    {{ item.cantidad }}x {{ item.mueble.nombre }}
+                    <span *ngIf="item.variante">({{ item.variante.descripcion }})</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="quote-total">
+            Total: ${{ c.total | number }}
+        </div>
+
+        <div class="actions" *ngIf="!c.confirmada">
+            <button class="btn-confirm" (click)="confirm(c.id)">
+                Confirmar Venta
+            </button>
+        </div>
+    </div>
+
+    <div *ngIf="cotizaciones.length === 0" class="no-data">
+        <p>No hay cotizaciones registradas.</p>
+    </div>
+</div>

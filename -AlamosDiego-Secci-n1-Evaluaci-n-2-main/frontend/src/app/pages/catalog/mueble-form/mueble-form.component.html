@@ -1,0 +1,64 @@
+<div class="page-header">
+    <h2>{{ isEditMode ? 'Editar Mueble' : 'Nuevo Mueble' }}</h2>
+</div>
+
+<div class="card form-container">
+    <form (ngSubmit)="saveMueble()">
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" [(ngModel)]="mueble.nombre" name="nombre" required>
+        </div>
+
+        <div class="form-group">
+            <label>Tipo</label>
+            <select [(ngModel)]="mueble.tipo" name="tipo" required>
+                <option value="Silla">Silla</option>
+                <option value="Mesa">Mesa</option>
+                <option value="Sofá">Sofá</option>
+                <option value="Estantería">Estantaría</option>
+                <option value="Cama">Cama</option>
+                <option value="Escritorio">Escritorio</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Precio Base</label>
+                <input type="number" [(ngModel)]="mueble.precioBase" name="precioBase" required>
+            </div>
+            <div class="form-group">
+                <label>Stock</label>
+                <input type="number" [(ngModel)]="mueble.stock" name="stock" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Tamaño</label>
+                <select [(ngModel)]="mueble.tamano" name="tamano" required>
+                    <option value="Pequeño">Pequeño</option>
+                    <option value="Mediano">Mediano</option>
+                    <option value="Grande">Grande</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Material</label>
+                <input type="text" [(ngModel)]="mueble.material" name="material" required
+                    placeholder="Ej: Madera, Metal">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Estado</label>
+            <select [(ngModel)]="mueble.estado" name="estado">
+                <option value="activo">Activo</option>
+                <option value="inactivo">Inactivo</option>
+            </select>
+        </div>
+
+        <div class="actions">
+            <button type="button" class="btn-secondary" routerLink="/admin/catalog">Cancelar</button>
+            <button type="submit" class="btn-primary">Guardar</button>
+        </div>
+    </form>
+</div>

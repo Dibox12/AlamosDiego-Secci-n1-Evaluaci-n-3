@@ -1,0 +1,125 @@
+<div class="catalog-container">
+    <header class="catalog-header">
+        <div>
+            <h2>Catálogo de Muebles</h2>
+            <p class="subtitle">Descubre nuestra colección de muebles artesanales de alta calidad</p>
+        </div>
+        <button class="btn-cart" *ngIf="cartItems.length > 0" (click)="scrollToQuote()">
+            Mi Cotización ({{ cartItems.length }})
+        </button>
+    </header>
+
+    <!-- Filters Section -->
+    <div class="filters-bar">
+        <div class="filter-header">
+            <span class="icon-filter">🛠️</span> <span>Filtros</span>
+        </div>
+        <div class="filter-controls">
+            <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar muebles..." class="search-input">
+
+            <select [(ngModel)]="selectedType">
+                <option value="">Todos los tipos</option>
+                <option *ngFor="let t of uniqueTypes" [value]="t">{{ t }}</option>
+            </select>
+
+            <select [(ngModel)]="selectedSize">
+                <option value="">Todos los tamaños</option>
+                <option *ngFor="let s of uniqueSizes" [value]="s">{{ s }}</option>
+            </select>
+
+            <select [(ngModel)]="selectedMaterial">
+                <option value="">Todos los materiales</option>
+                <option *ngFor="let m of uniqueMaterials" [value]="m">{{ m }}</option>
+            </select>
+
+            <div class="price-range">
+                <input type="number" [(ngModel)]="minPrice" placeholder="Min $">
+                <input type="number" [(ngModel)]="maxPrice" placeholder="Max $">
+            </div>
+        </div>
+    </div>
+
+    <p class="results-count">{{ filteredMuebles.length }} productos encontrados</p>
+
+    <div class="public-grid">
+        <div class="mueble-card" *ngFor="let m of filteredMuebles">
+            <!-- Image Placeholder -->
+            <div class="card-image">
+                <div class="placeholder-icon">📦</div>
+                <div class="stock-badge" [class.low-stock]="m.stock < 5" *ngIf="m.stock < 10 && m.stock > 0">
+                    Últimas {{ m.stock }} unidades
+                </div>
+                <div class="stock-badge out-stock" *ngIf="m.stock === 0">Sin Stock</div>
+            </div>
+
+            <div class="card-content">
+                <div class="tags">
+                    <span class="tag">{{ m.tipo }}</span>
+                    <span class="tag">{{ m.tamano }}</span>
+                </div>
+
+                <h3>{{ m.nombre }}</h3>
+                <p class="material-text">{{ m.material }}</p>
+
+                <div class="card-footer">
+                    <span class="price">${{ m.precioBase | number }}</span>
+                    <span class="price-label">precio base</span>
+                </div>
+
+                <!-- Interaction Section -->
+                <div class="controls">
+                    <div class="control-row">
+                        <select #variantSelect class="variant-select">
+                            <option value="">Estándar</option>
+                            <option *ngFor="let v of variantes" [value]="v.id">
+                                {{ v.descripcion }} (+${{ v.incrementoPrecio }})
+                            </option>
+                        </select>
+                        <input #qtyInput type="number" min="1" value="1" [max]="m.stock" class="qty-input">
+                    </div>
+
+                    <p class="total-preview">
+                        Total: ${{ (m.precioBase + getVariantPrice(m.id, variantSelect.value)) * (+qtyInput.value) |
+                        number }}
+                    </p>
+
+                    <button class="btn-add" (click)="addToQuote(m, qtyInput.value, variantSelect.value)"
+                        [disabled]="m.stock === 0">
+                        {{ m.stock > 0 ? 'Agregar' : 'Agotado' }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quote Section -->
+    <div class="quote-section" id="quote-section" *ngIf="cartItems.length > 0">
+        <div class="quote-container">
+            <h3>Tu Cotización</h3>
+            <p class="subtitle">Revisa los productos seleccionados y confirma tu compra</p>
+
+            <div class="cart-items">
+                <div *ngFor="let item of cartItems" class="cart-item">
+                    <div class="item-icon">📦</div>
+                    <div class="item-details">
+                        <h4>{{ item.mueble.nombre }}</h4>
+                        <p>{{ item.variante ? item.variante.descripcion : 'Estándar' }} | Cantidad: {{ item.cantidad }}
+                        </p>
+                    </div>
+                    <div class="item-price">${{ item.precioTotal | number }}</div>
+                </div>
+            </div>
+
+            <div class="quote-footer">
+                <div class="form-group">
+                    <input type="text" [(ngModel)]="clientName" placeholder="Nombre del Cliente" class="input-name">
+                </div>
+                <div class="total-row">
+                    <span>Total Estimado:</span>
+                    <span class="total-amount">${{ totalEstimado | number }}</span>
+                </div>
+                <button class="btn-primary btn-block" (click)="submitQuote()">Solicitar Cotización</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="page-header">
+    <h2>{{ isEditMode ? 'Editar Variante' : 'Nueva Variante' }}</h2>
+</div>
+
+<div class="card form-container">
+    <form (ngSubmit)="saveVariante()">
+        <div class="form-group">
+            <label>Descripción</label>
+            <input type="text" [(ngModel)]="variante.descripcion" name="descripcion" required
+                placeholder="Ej: Barniz Premium">
+        </div>
+
+        <div class="form-group">
+            <label>Incremento de Precio</label>
+            <input type="number" [(ngModel)]="variante.incrementoPrecio" name="incrementoPrecio" required>
+        </div>
+
+        <div class="form-group">
+            <label>Aplica a Mueble (Opcional)</label>
+            <select [(ngModel)]="selectedMuebleId" name="muebleId">
+                <option [ngValue]="null">-- General / Ninguno --</option>
+                <option *ngFor="let m of muebles" [value]="m.id">{{ m.nombre }}</option>
+            </select>
+        </div>
+
+        <div class="actions">
+            <button type="button" class="btn-secondary" routerLink="/admin/variants">Cancelar</button>
+            <button type="submit" class="btn-primary">Guardar</button>
+        </div>
+    </form>
+</div>

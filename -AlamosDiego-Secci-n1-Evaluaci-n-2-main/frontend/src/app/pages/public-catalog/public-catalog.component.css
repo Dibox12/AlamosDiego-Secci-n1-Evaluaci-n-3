@@ -1,0 +1,284 @@
+.catalog-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.subtitle {
+    color: #666;
+    margin-top: 0;
+}
+
+/* Filters Bar */
+.filters-bar {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.filter-header {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-controls {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.search-input {
+    flex-grow: 1;
+    min-width: 200px;
+}
+
+.price-range {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.price-range input {
+    width: 80px;
+}
+
+.results-count {
+    margin-top: 2rem;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* Grid */
+.public-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+/* Card Styles */
+.mueble-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.mueble-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-5px);
+}
+
+.card-image {
+    height: 200px;
+    background-color: #e8e6df;
+    /* Placeholder gray/beige */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.placeholder-icon {
+    font-size: 4rem;
+    opacity: 0.2;
+}
+
+.stock-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: #fff3e0;
+    color: #f57c00;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.stock-badge.out-stock {
+    background: #ffebee;
+    color: #d32f2f;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.tag {
+    background: #f5f5f5;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    color: #666;
+    text-transform: capitalize;
+}
+
+.mueble-card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.material-text {
+    font-size: 0.9rem;
+    color: #888;
+    margin: 0 0 1.5rem 0;
+}
+
+.card-footer {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2e7d32;
+}
+
+.price-label {
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+/* Controls inside Card */
+.controls {
+    background: #fafafa;
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+.control-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.variant-select {
+    flex-grow: 1;
+    font-size: 0.85rem;
+}
+
+.qty-input {
+    width: 60px;
+    text-align: center;
+}
+
+.total-preview {
+    font-size: 0.85rem;
+    text-align: right;
+    margin: 0 0 0.8rem 0;
+    color: #555;
+    font-weight: 600;
+}
+
+.btn-add {
+    width: 100%;
+    background: white;
+    border: 1px solid #3e2723;
+    color: #3e2723;
+    padding: 0.6rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-add:hover:not(:disabled) {
+    background: #3e2723;
+    color: white;
+}
+
+.btn-add:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: #ccc;
+    color: #ccc;
+}
+
+/* Quote Section */
+.quote-section {
+    margin-top: 4rem;
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.cart-items {
+    margin: 2rem 0;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.item-icon {
+    width: 40px;
+    height: 40px;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.item-details h4 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.item-details p {
+    margin: 0.2rem 0 0 0;
+    font-size: 0.85rem;
+    color: #777;
+}
+
+.item-price {
+    margin-left: auto;
+    font-weight: 600;
+}
+
+.quote-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.total-row {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.total-amount {
+    margin-left: 1rem;
+    color: #2e7d32;
+}
+
+.input-name {
+    min-width: 300px;
+}
+
+.btn-block {
+    width: 100%;
+    max-width: 300px;
+}

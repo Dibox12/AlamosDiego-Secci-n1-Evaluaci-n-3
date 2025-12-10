@@ -1,0 +1,22 @@
+<nav>
+    <div class="logo">Mueblería Gustavo</div>
+
+    <div class="links" *ngIf="currentRole === 'admin'">
+        <a routerLink="/admin/catalog" routerLinkActive="active">Catalog</a>
+        <a routerLink="/admin/variants" routerLinkActive="active">Variant</a>
+        <a routerLink="/admin/quotes" routerLinkActive="active">Quotes</a>
+    </div>
+
+    <div class="links" *ngIf="currentRole === 'user'">
+        <a routerLink="/public" routerLinkActive="active">Catálogo Público</a>
+    </div>
+
+    <div class="role-switch">
+        <span [class.active-role]="currentRole === 'user'">Cliente</span>
+        <label class="switch">
+            <input type="checkbox" [checked]="currentRole === 'admin'" (change)="toggleRole()">
+            <span class="slider round"></span>
+        </label>
+        <span [class.active-role]="currentRole === 'admin'">Admin (Gustavo)</span>
+    </div>
+</nav>
